@@ -1,0 +1,47 @@
+{
+  "name": "govhack2014",
+  "version": "0.0.0",
+  "subdomain": "govhack2014",
+  "domains": [
+    "govhack2014.totesprofe.sh"
+  ],
+  "author": {
+    "name": "TotesProfesh",
+    "email": "hello@totesprofe.sh"
+  },
+  "description": "GovHack 2014",
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:totesprofesh/govhack2014.git"
+  },
+  "keywords": [
+    "app",
+    "trove"
+  ],
+  "homepage": "http://govhack2014.totesprofe.sh",
+  "scripts": {
+    "start": "node ./bin/server"
+  },
+  "contributors": [
+    {
+      "name": "Josh Gillies",
+      "email": "contact@joshgilli.es"
+    }
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": "0.10.x"
+  },
+  "bugs": {
+    "url": "https://github.com/totesprofesh/govhack2014/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "analyze": false,
+  "readmeFilename": "README.md"
+}
