@@ -57,7 +57,7 @@
     "watch": "gulp watch",
     "check": "david",
     "build": "gulp"
-  }
+  },
   "bugs": {
     "url": "https://github.com/totesprofesh/govhack2014/issues"
   },
