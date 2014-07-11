@@ -21,7 +21,8 @@
   ],
   "homepage": "http://govhack2014.totesprofe.sh",
   "scripts": {
-    "start": "gulp; gulp watch; node ./bin/server",
+    "start": "node ./bin/server",
+    "dev": "gulp; gulp watch",
     "watch": "gulp watch",
     "check": "david",
     "build": "gulp"
