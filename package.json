@@ -1,6 +1,6 @@
 {
   "name": "govhack2014",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "subdomain": "govhack2014",
   "domains": [
     "govhack2014.totesprofe.sh"
@@ -21,7 +21,7 @@
   ],
   "homepage": "http://govhack2014.totesprofe.sh",
   "scripts": {
-    "start": "node ./bin/server"
+    "start": ""
   },
   "contributors": [
     {
@@ -30,10 +30,34 @@
     }
   ],
   "dependencies": {},
-  "devDependencies": {},
-  "engines": {
-    "node": "0.10.x"
+  "devDependencies": {
+    "david": "^3.1.0",
+    "gulp": "^3.6.0",
+    "gulp-load-plugins": "^0.4.0",
+    "gulp-util": "~2.2.9",
+    "gulp-autoprefixer": "~0.0.6",
+    "gulp-jshint": "^1.5.0",
+    "gulp-jade": "^0.4.2",
+    "gulp-imagemin": "~0.1.4",
+    "gulp-minify-css": "^0.3.0",
+    "gulp-filter": "^0.3.1",
+    "gulp-uglify": "^0.2.1",
+    "gulp-clean": "~0.2.4",
+    "gulp-cache": "~0.1.1",
+    "gulp-sass": "*",
+    "gulp-size": "^0.2.0",
+    "gulp-connect": "^1.0.7",
+    "gulp-useref": "*"
   },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "start": "gulp; gulp watch; node ./bin/server",
+    "watch": "gulp watch",
+    "check": "david",
+    "build": "gulp"
+  }
   "bugs": {
     "url": "https://github.com/totesprofesh/govhack2014/issues"
   },
