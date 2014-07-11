@@ -1,6 +1,6 @@
 {
   "name": "govhack2014",
-  "version": "0.0.1",
+  "version": "0.0.1-1",
   "subdomain": "govhack2014",
   "domains": [
     "govhack2014.totesprofe.sh"
@@ -21,7 +21,7 @@
   ],
   "homepage": "http://govhack2014.totesprofe.sh",
   "scripts": {
-    "start": "node ./bin/server",
+    "start": "node ./app.js",
     "dev": "gulp; gulp watch",
     "watch": "gulp watch",
     "check": "david",
