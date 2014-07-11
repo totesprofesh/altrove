@@ -1,0 +1,48 @@
+include mixins
+block config
+  include config
+doctype html
+!= "<!--[if lt IE 7]>      <html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"> <![endif]-->"
+!= "<!--[if IE 7]>         <html class=\"no-js lt-ie9 lt-ie8\"> <![endif]-->"
+!= "<!--[if IE 8]>         <html class=\"no-js lt-ie9\"> <![endif]-->"
+!= "<!--[if gt IE 8]><!-->"
+html.no-js
+  != "<!--<![endif]-->"
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+
+    title=pageTitle
+
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    link(rel='stylesheet', href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|Open+Sans:400,600,700|Open+Sans+Condensed:300,700')
+    // build:css css/main.css 
+    link(rel='stylesheet', href='styles/main.css')
+    // endbuild 
+
+    // build:js js/modernizr-2.7.1.min.js 
+    script(src='scripts/libs/modernizr-2.7.1.js')
+    // endbuild 
+
+  body(class=bodyClass || '')
+
+    block content
+    
+    
+    // build:js js/main.js
+    script(src='scripts/libs/jquery-1.11.0.js')
+    script(src='scripts/libs/css3-multi-column.js')
+    script(src='scripts/libs/avoid-console-errors.js')
+    script(src='scripts/libs/placeholders.jquery.js')
+    script(src='scripts/main.js')
+    // endbuild 
+
+    script.
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');

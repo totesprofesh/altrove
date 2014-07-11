@@ -1,0 +1,13 @@
+.btn {
+
+    @include box-sizing(border-box);
+    
+    display: inline-block;
+    
+    &:hover,
+    &:focus,
+    &:active {
+        
+    }
+    
+}
