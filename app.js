@@ -20,8 +20,14 @@ var restify = require('restify');
 var server = restify.createServer();
 var routes = require('./routes');
 
+server.use(restify.gzipResponse());
+
 server.get('/random/pictures.json', routes.pictures.get_random_pictures);
 server.get('/autocomplete', routes.autocomplete);
+server.get(/.*/, restify.serveStatic({
+  directory: './static',
+  default: 'index.html'
+}));
 
 server.listen(process.env.PORT, function start_server() {
 	console.log('%s listening at %s', server.name, server.url);
