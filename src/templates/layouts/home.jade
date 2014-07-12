@@ -1,6 +1,29 @@
 extends ../layout
 block config
-    - var title='Default Index'
-    - var bodyClass='index'
+		- var title='Default Index'
+		- var bodyClass='index'
 
-block content            
+block content
+	header.site-header            
+		include ../components/navigation
+	main.primary-content
+		include ../components/search
+		include ../components/blurb
+	footer.primary-footer
+		nav
+			ul
+				li
+					a(href="http://help.nla.gov.au/trove/building-with-trove/api") API 
+				li
+					a(href="http://trove.nla.gov.au/general/about#disclaimer") Disclaimer
+				li
+					a(href="http://trove.nla.gov.au/general/privacy") Privacy
+				li
+					a(href="http://trove.nla.gov.au/general/termsofuse") Terms of Use
+				li
+					a(href="http://help.nla.gov.au/trove/our-policies/copyright") Copyright
+				li
+					a(href="http://help.nla.gov.au//general/completedlist") Version: 6.1 + Altrove
+		
+	section.background
+		include ../components/cards

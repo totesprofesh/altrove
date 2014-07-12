@@ -1,0 +1,47 @@
+html,
+body {
+	height: 100%;
+}
+
+body {
+	background: $background-dark;
+	padding: 0;
+	margin: 0;
+}
+
+.visually-hidden {
+	display: none;
+}
+
+.site-header,
+.primary-content,
+.primary-footer {
+	position: relative;
+	z-index: 2;
+}
+
+.background {
+	top: 42px;
+	left: 0;
+	position: absolute;
+	height: calc(100% - 42px;
+	width: 100%;
+	z-index: 1;
+}
+
+.primary-content {
+	@include box-sizing(border-box);
+	top: 10%;
+	width: 60%;
+	left: 50%;
+	margin-left: -30%;
+	position: fixed;
+}
+
+.primary-footer {
+	background: $background-dark;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}

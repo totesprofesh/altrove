@@ -1,0 +1,40 @@
+.primary-navigation {
+	background: $background-dark;
+}
+
+nav {
+	ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+		li {
+			display: inline-block;
+		}
+		a {
+			@include box-sizing(border-box);
+			@include transition(background 300ms ease-in-out);
+			color: $light-text;
+			display: block;
+			text-decoration: none;
+			padding: 10px;
+
+			.definition {
+				@include box-sizing(border-box);
+				padding: 10px;
+				position: absolute;
+				background: $rover;
+				display: none;
+				top: 100%;
+				left: 0;
+				width: 100%;
+			}
+
+			&:hover {
+				background: $rover;
+				.definition {
+					display: block;
+				}
+			}
+		}
+}

@@ -1,0 +1,66 @@
+.cards { 
+	@include column-count(8);
+	@include column-gap(0px);
+
+ .card {
+ 	overflow: hidden;
+
+ 	a {
+		@include transition(opacity 300ms ease-in-out);
+ 		text-decoration: none;
+ 		color: $text-light;
+ 		display: block;
+ 		opacity: 0.6;
+ 		&:hover {
+ 			opacity: 1;
+ 		}
+ 	}
+
+ 	&.image {
+ 		img {
+	 		width: 100%;
+	 		height: auto;
+	 		display: block;
+	 		background: rgba(black, 0.01);
+	 	}
+	 	background: lighten($rover, 8%);
+ 		&:nth-child(even) {
+ 			background: darken($rover, 1%);
+ 		}
+ 	}
+
+ 	&.tag {
+ 		background: lighten($rover, 10%);
+ 		&:nth-child(even) {
+ 			background: lighten($rover, 7%);
+ 		}
+ 	}
+
+ 	&.recentsearch {
+ 		background: lighten($rover, 5%);
+ 		&:nth-child(even) {
+ 			background: darken($rover, 2%);
+ 		}
+ 	}
+
+ 	&.tag,
+ 	&.recentsearch {
+ 		@include box-sizing(border-box);
+ 		padding: 10px;
+ 	}
+
+ }
+}
+
+
+
+//Fallback for IE10
+.lt-ie10 {
+	.cards {
+		overflow: hidden;
+		.card {
+			width: 10%;
+			float: left;
+		}
+	}
+}

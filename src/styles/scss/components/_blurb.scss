@@ -1,0 +1,8 @@
+.blurb {
+	@include box-sizing(border-box);
+	padding: 20px;
+	margin: 0 auto;
+	color: $text-light;
+	background: rgba($background-dark, 0.8);
+}
+
