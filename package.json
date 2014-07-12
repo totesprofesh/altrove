@@ -1,6 +1,6 @@
 {
   "name": "govhack2014",
-  "version": "0.0.1-1",
+  "version": "0.0.1-2",
   "subdomain": "govhack2014",
   "domains": [
     "govhack2014.totesprofe.sh"
@@ -35,6 +35,8 @@
   ],
   "dependencies": {
     "cheerio": "^0.17.0",
+    "elasticsearch": "^2.3.0",
+    "pouchdb": "^2.2.3",
     "pouchdb": "^2.2.3",
     "restify": "^2.8.1"
   },
