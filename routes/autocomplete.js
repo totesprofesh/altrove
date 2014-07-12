@@ -16,6 +16,7 @@ module.exports = autocomplete = function autocomplete (req, res, next) {
     query: query.toLowerCase()
   }, function (err, data) {
     if (err) return next(err);
+    res.charSet('utf-8');
     res.send({
       results: data
     });
