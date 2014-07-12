@@ -2,13 +2,14 @@ var app = app || {};
 
 $(document).ready(function(){
 	'use strict';
+	
+	app.BASEAPIURL = 'http://0.0.0.0:60022';
 
-	$.get('data/background.json',function(data){
-		app.populateBackground(data);
-	},'json');
+	// $.get('data/background.json',function(data){
+	// 	app.populateBackground(data);
+	// },'json');
 
 	app.searchTabs();
-
 	app.formRangeFields();
 	app.formTagFields();
 	app.searchHistory();
@@ -42,10 +43,24 @@ app.searchAutoComplete = function() {
 	function doRemoteAutocomplete(search) {
 		var matches = [];
 		console.time('getSearch');
-		$.get('data/autocomplete?query='+search, function(data){
-			console.timeEnd('getSearch');
-			console.log(data);
-		},'json');
+
+		// $.ajax({
+		// 	url: app.BASEAPIURL + '/autocomplete?query='+search,
+		// 	success:function(result){
+		//     console.log(result);
+		//   }
+		// });
+
+
+
+		// $.get(app.BASEAPIURL + '/autocomplete?query='+search, function(data){
+		// 	console.timeEnd('getSearch');
+		// 	console.log(data);
+
+		// 	$(data.results).each(function(i, data) {
+		// 		remoteACStage.append($('<li/>').append($('<a/>').attr('href','#').text(data)));
+		// 	});
+		// }, 'json');
 	}
 
 	function doLocalAutocomplete(search) {

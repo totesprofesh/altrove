@@ -11,7 +11,7 @@ $.connect = require('gulp-connect');
 $.useref = require('gulp-useref');
 
 var app = join(__dirname, 'src');
-var dist = join(__dirname, 'build');
+var dist = join(__dirname, 'static');
 
 // Styles
 gulp.task('styles', function () {
