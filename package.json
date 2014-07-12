@@ -34,8 +34,9 @@
     }
   ],
   "dependencies": {
+    "cheerio": "^0.17.0",
     "pouchdb": "^2.2.3",
-    "cheerio": "^0.17.0"
+    "restify": "^2.8.1"
   },
   "devDependencies": {
     "david": "^3.1.0",
