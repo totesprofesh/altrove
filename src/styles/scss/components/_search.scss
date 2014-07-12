@@ -47,6 +47,56 @@
 	}
 }
 
+
+/*
+* Auto Complete
+*/
+
+.autocomplete {
+	background: white;
+	h2 {
+		@include font-size(30px);
+		padding: 10px;
+		display: none;
+		color: $text-dark;
+	}
+	ul {
+		background: url('../images/spinner.gif') no-repeat 10px -10px;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		li {
+			background: white;
+			a {
+				@include transition(all 300ms ease-in-out);
+				padding: 10px;
+				display: block;
+				color: $text-dark;
+				text-decoration: none;
+				&:hover {
+
+					background: $rover;
+					color: $text-light;
+				}
+			}
+		}
+	}
+
+	&.active {
+		h2 {
+			display: block;
+		}
+		ul {
+			min-height: 42px;
+		}
+	}
+}
+
+
+/*
+* Tabs
+*/
+
 .tab-nav {
 	margin-top: 20px;
 	a {
@@ -73,6 +123,12 @@
 	}
 }
 
+
+
+/*
+* History
+*/
+
 	.history {
 		table {
 			width: 100%;
@@ -97,6 +153,16 @@
 			}
 	}
 
+
+
+/*
+* Form styles
+*/
+
+.added-filters {
+	display: none;
+}
+
 .filter {
 	@include transition(all 300ms ease-in-out);
 	@include box-sizing(border-box);
@@ -117,6 +183,3 @@
 	background: $rover;
 }
 
-.added-filters {
-	display: none;
-}

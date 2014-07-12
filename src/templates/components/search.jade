@@ -1,8 +1,14 @@
 form(class="search" action="http://trove.nla.gov.au/result")
 	label.primary-search-box
 		span.screen-reader-text Search TROVE for people, places and things
-		input(name="q" class="textboxsearch" title="Search for" placeholder="Search for people, places or things"  value="" type="text")
+		input(name="q" autocomplete="off" class="textboxsearch" title="Search for" placeholder="Search for people, places or things"  value="" type="text")
 		button(type='submit').btn.icon-search Search
+	div.autocomplete
+		h2 Your Searches
+		ul.local
+		h2 Recent TROVE Searches
+		ul.remote
+
 
 	div.tab-nav
 		a.toggle-advanced.btn(href="#") Advanced
@@ -614,11 +620,9 @@ form(class="search" action="http://trove.nla.gov.au/result")
 				div.added-filters
 
 		div.tab.history
+			a.clear-history.btn(href="#") Clear History
 			table
 				tr
 					th Query
 					th From
 					th To
-
-
-

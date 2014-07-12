@@ -2,7 +2,7 @@ var app = app || {};
 
 $(document).ready(function(){
 	'use strict';
-	
+
 	$.get('data/background.json',function(data){
 		app.populateBackground(data);
 	},'json');
@@ -12,14 +12,78 @@ $(document).ready(function(){
 	app.formRangeFields();
 	app.formTagFields();
 	app.searchHistory();
+	app.searchAutoComplete();
 
 });
 
+app.searchAutoComplete = function() {
+	var searchForm = $('.search .primary-search-box');
+	var input = searchForm.find('input[type="text"]');
+	var autocompleteStage = $('.search .autocomplete');
+	var localACStage = autocompleteStage.find('.local');
+	var remoteACStage = autocompleteStage.find('.remote');
+
+	input.on('keyup', function(e) {
+		var str = $(this).val();
+
+		if(str.length > 2){
+			var remoteMatches = [];
+
+			doLocalAutocomplete(str);
+			doRemoteAutocomplete(str);
+		} else {
+			//cleanup
+			autocompleteStage.find('li').remove();
+			autocompleteStage.removeClass('active');
+		}
+
+	});
+
+	function doRemoteAutocomplete(search) {
+		var matches = [];
+		console.time('getSearch');
+		$.get('data/autocomplete?query='+search, function(data){
+			console.timeEnd('getSearch');
+			console.log(data);
+		},'json');
+	}
+
+	function doLocalAutocomplete(search) {
+		var matches = [];
+		var term = '';
+
+		autocompleteStage.addClass('active');
+
+		store.forEach(function(key, data) {
+			term = queryStringToArray(data.value)['q'].split('+').join(' ');
+
+			if(term.indexOf(search) !== -1) {
+				matches.push(term);
+			}
+		});
+
+		localACStage.find('li').remove();
+
+		$(matches).each(function(i, data) {
+			localACStage.append($('<li/>').append($('<a/>').attr('href','#').text(data)));
+		});
+	}
+
+};
+
 app.searchHistory = function() {
 	var searchForm = $('.search');
-	var historyStage = $('.history table');
+	var historyContainer = $('.history');
+	var historyStage = historyContainer.find('table');
+
+	historyContainer.find('.clear-history').on('click', function(e) {
+		e.preventDefault();
+		store.clear();
+		historyStage.find('tr').remove();
+	});
 
 	searchForm.on('submit', function(e) {
+		//@todo: Find a nicer way to store these
 		store.set(parseInt(new Date().getTime()/1000, 10), {'type': 'pastsearch', 'value': $(this).serialize()});
 	});
 
