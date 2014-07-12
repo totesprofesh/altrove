@@ -12,27 +12,25 @@ $transition-default: all 300ms ease-in-out;
 //FONTS
 $defaultFontSize: 1;
 
-$body-font: sans-serif;
-$heading-font: $body-font;
+$main-font: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   
+$grass: #649f41;
+$sickly: #aee39b;
+$rover: #2a0c25;
+$puke: #d2cc25;
+
+$color-accent: $grass;
+$color-accent-light: $sickly;
+
+$body-font: $main-font;
+$heading-font: $main-font;
+
+$background-dark: #101010;
+$background-mid: #2c2c2c;
+$background-light: #eaeaea;
+
+$text-dark: #101010;
+$text-light: #eaeaea;
 
 
-/**
- * Raw Colors - Try not to use these within actual styles!
- *
- * Colour names ref: http://chir.ag/projects/name-that-color
- */
-
-
-// Blacks
-$cod-gray: #111;
-
-
-
-/**
- * Purpose-based colors
- */
-
-$color-text: $cod-gray;
-$color-link: $color-text;
-$color-heading: $color-text;
-$color-subdued-text: $color-text;
+$light-text: #fff;

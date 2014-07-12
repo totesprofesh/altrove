@@ -5,6 +5,7 @@ doctype html
 != "<!--[if lt IE 7]>      <html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"> <![endif]-->"
 != "<!--[if IE 7]>         <html class=\"no-js lt-ie9 lt-ie8\"> <![endif]-->"
 != "<!--[if IE 8]>         <html class=\"no-js lt-ie9\"> <![endif]-->"
+!= "<!--[if IE 9]>         <html class=\"no-js lt-ie10\"> <![endif]-->"
 != "<!--[if gt IE 8]><!-->"
 html.no-js
   != "<!--<![endif]-->"
@@ -33,8 +34,10 @@ html.no-js
     
     // build:js js/main.js
     script(src='scripts/libs/jquery-1.11.0.js')
-    script(src='scripts/libs/css3-multi-column.js')
     script(src='scripts/libs/avoid-console-errors.js')
+    script(src='scripts/libs/store.js')
+    script(src='scripts/libs/jquery.nouislider.min.js')
+    script(src='scripts/libs/selectordie.js')
     script(src='scripts/libs/placeholders.jquery.js')
     script(src='scripts/main.js')
     // endbuild 
