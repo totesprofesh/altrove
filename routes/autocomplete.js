@@ -13,10 +13,12 @@ module.exports = autocomplete = function autocomplete (req, res, next) {
   elastiq.search(client, {
     index: process.env.ES_INDEX,
     type: process.env.ES_TYPE,
-    query: query
+    query: query.toLowerCase()
   }, function (err, data) {
     if (err) return next(err);
-		res.send(data);
-		return next();
+    res.send({
+      results: data
+    });
+    return next();
   });
 };
