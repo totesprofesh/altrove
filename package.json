@@ -1,6 +1,6 @@
 {
   "name": "govhack2014",
-  "version": "0.0.1",
+  "version": "0.0.1-2",
   "subdomain": "govhack2014",
   "domains": [
     "govhack2014.totesprofe.sh"
@@ -21,7 +21,11 @@
   ],
   "homepage": "http://govhack2014.totesprofe.sh",
   "scripts": {
-    "start": ""
+    "start": "node ./app.js",
+    "dev": "gulp; gulp watch",
+    "watch": "gulp watch",
+    "check": "david",
+    "build": "gulp"
   },
   "contributors": [
     {
@@ -29,7 +33,13 @@
       "email": "contact@joshgilli.es"
     }
   ],
-  "dependencies": {},
+  "dependencies": {
+    "cheerio": "^0.17.0",
+    "elasticsearch": "^2.3.0",
+    "pouchdb": "^2.2.3",
+    "pouchdb": "^2.2.3",
+    "restify": "^2.8.1"
+  },
   "devDependencies": {
     "david": "^3.1.0",
     "gulp": "^3.6.0",
@@ -51,12 +61,6 @@
   },
   "engines": {
     "node": ">=0.10.0"
-  },
-  "scripts": {
-    "start": "gulp; gulp watch; node ./bin/server",
-    "watch": "gulp watch",
-    "check": "david",
-    "build": "gulp"
   },
   "bugs": {
     "url": "https://github.com/totesprofesh/govhack2014/issues"
