@@ -4,7 +4,6 @@ var trove_search = require('../lib/trove_search');
 
 exports.get_random_pictures = function (req, res, next) {
 	var query = url.parse(req.url, true).query;
-	console.log(query)
 
 	var args = {
 		key: process.env.TROVE_KEY,
