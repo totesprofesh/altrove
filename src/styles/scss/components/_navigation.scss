@@ -52,3 +52,15 @@ nav {
 			}
 		}
 }
+
+
+@include respond-to("screen and (max-width:1280px)") {
+	nav {
+		ul {
+			a {
+				@include font-size(13px);
+				padding: 12px 5px;
+			}
+		}
+	}
+}
