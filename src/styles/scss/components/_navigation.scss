@@ -2,8 +2,19 @@
 	background: $background-dark;
 }
 
+.logo {
+	@include font-size(30px);
+	@include box-sizing(border-box);
+	padding: 0 20px;
+	margin: 0;
+	display: inline-block;
+	color: #fff;
+	vertical-align: bottom;
+}
+
 nav {
 	ul {
+		display: inline-block;
 		padding: 0;
 		margin: 0;
 		list-style: none;
@@ -31,8 +42,6 @@ nav {
 				top: 100%;
 				left: 0;
 				width: 400px;
-
-
 			}
 
 			&:hover {

@@ -2,10 +2,22 @@ var app = app || {};
 
 $(document).ready(function(){
 	'use strict';
-	
-	$.get('/random/pictures.json?count=120',function(data){
-		app.populateBackground(data);
-	},'json');
+
+	enquire.register("screen and (min-width:1290px)", {
+	    match : function() {
+	    	$.get('/random/pictures.json?count=100',function(data){
+					app.populateBackground(data);
+				},'json');
+	    },      
+	});
+
+	enquire.register("screen and (max-width:1280px) and (min-width:1000px)", {
+	    match : function() {
+	    	$.get('/random/pictures.json?count=40',function(data){
+					app.populateBackground(data);
+				},'json');
+	    },      
+	});
 
 	app.searchTabs();
 	app.formRangeFields();
@@ -31,7 +43,7 @@ app.searchAutoComplete = function() {
 			doLocalAutocomplete(str);
 			doRemoteAutocomplete(str);
 		} else {
-			//cleanup
+			// Cleanup
 			autocompleteStage.find('li').remove();
 			autocompleteStage.removeClass('active');
 		}
@@ -46,7 +58,7 @@ app.searchAutoComplete = function() {
 
 			if(data.results.length > 0){
 				$(data.results).each(function(i, data) {
-					remoteACStage.append($('<li/>').append($('<a/>').attr('href','#').text(data)));
+					remoteACStage.append($('<li/>').append($('<a/>').attr('href','href','http://trove.nla.gov.au/result?q='+data).text(data)));
 				});
 			} else {
 				remoteACStage.append($('<li/>').append($('<a/>').text('No remote matches')));
@@ -61,10 +73,12 @@ app.searchAutoComplete = function() {
 		autocompleteStage.addClass('active');
 
 		store.forEach(function(key, data) {
-			term = queryStringToArray(data.value)['q'].split('+').join(' ');
+			if(data.value){
+				term = queryStringToArray(data.value)['q'].split('+').join(' ');
 
-			if(term.indexOf(search) !== -1) {
-				matches.push(term);
+				if(term.indexOf(search) !== -1) {
+					matches.push(term);
+				}
 			}
 		});
 

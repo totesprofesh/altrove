@@ -1,25 +1,35 @@
 .cards { 
-	@include column-count(15);
+	@include column-count(12);
 	@include column-gap(0px);
+
+	@include respond-to("screen and (max-width:1280px) and (min-width:1000px)") {
+		@include column-count(8);
+	}
+
+	@include respond-to("screen and (min-width:1290px)") {
+		@include column-count(12);
+	}
 
  .card {
  	@include transition(opacity 1000ms ease-in-out);
  	overflow: hidden;
  	opacity: 0;
- 	height: 100px;
+ 	height: 140px;
  	position: relative;
  	&.active {
  		opacity: 1;
  	}
  	&:nth-child(3n) {
- 		height: 200px;
+ 		height: 210px;
  	}
  	&:nth-child(2n) {
  		height: 180px;
  	}
  	&:nth-child(5n) {
- 		height: 150px;
+ 		height: 160px;
  	}
+
+
 
  	a {
 		@include transition(opacity 300ms ease-in-out);
