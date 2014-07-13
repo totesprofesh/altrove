@@ -20,6 +20,10 @@ body {
 	z-index: 2;
 }
 
+.site-header {
+	z-index: 10;
+}
+
 .background {
 	top: 0;
 	left: 0;
@@ -44,4 +48,18 @@ body {
 	bottom: 0;
 	left: 0;
 	width: 100%;
+	overflow: hidden;
+	
+	nav {
+		float: left;
+	}
+
+	.signoff {
+		@include box-sizing(border-box);
+		display: block;
+		float: right;
+		padding: 10px;
+		color: #fff;
+		text-decoration: none;
+	}
 }
