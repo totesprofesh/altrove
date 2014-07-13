@@ -13,11 +13,7 @@ exports.get_random_pictures = function (req, res, next) {
 	};
 
 	var count = parseInt(query.count);
-	if (!count || count < 1) {
-		count = 10;
-	} else {
-		count = Math.min(count, 100);
-	}
+	count = (!count || count < 1) ? 10 : Math.min(count, 100);
 
 	var fixed_works = [];
 
