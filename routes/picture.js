@@ -17,26 +17,42 @@ exports.get_random_pictures = function (req, res, next) {
 
 	var fixed_works = [];
 
-	trove_search.get_random_works(args, count, function (err, obj) {
-		if (err) return next(err);
+	function get_random_works(count) {
+		trove_search.get_random_works(args, count, function (err, obj) {
+			if (err) return next(err);
 
-		var works = obj.response.zone[0].records.work;
-		var ids;
+			var works = obj.response.zone[0].records.work;
+			var ids;
+			var sent = false;
 
-		works.forEach(function (work) {
-			ids = work.identifier;
-			if (ids && ids.length > 1 && ids[1].linktype == 'thumbnail') {
-				fixed_works.push({
-					i: ids[1].value,
-					l: work.troveUrl,
-					t: work.title,
-				});
+			works.forEach(function (work) {
+				if (!sent) {
+					ids = work.identifier;
+					if (ids && ids.length > 1 && ids[1].linktype == 'thumbnail') {
+						fixed_works.push({
+							i: ids[1].value,
+							l: work.troveUrl,
+							//t: work.title,
+						});
+					}
+
+					if (fixed_works.length >= count) {
+						sent = true;
+						res.send({
+							image: fixed_works
+						});
+						next();
+					}
+				}
+			});
+
+			if (fixed_works.length < count) {
+				get_random_works(count - fixed_works.length + 1);
+				//args['n'] = works[works.length - 1].id
+				//trove_search.get_works(args, count, function (err, obj) {
 			}
 		});
+	}
 
-		res.send({
-			image: fixed_works
-		});
-		return next();
-	});
+	get_random_works(count);
 };
