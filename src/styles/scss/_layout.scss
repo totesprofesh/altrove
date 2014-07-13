@@ -21,9 +21,9 @@ body {
 }
 
 .background {
-	top: 42px;
+	top: 0;
 	left: 0;
-	position: absolute;
+	position: fixed;
 	height: calc(100% - 42px;
 	width: 100%;
 	z-index: 1;
@@ -35,7 +35,7 @@ body {
 	width: 60%;
 	left: 50%;
 	margin-left: -30%;
-	position: fixed;
+	position: absolute;
 }
 
 .primary-footer {

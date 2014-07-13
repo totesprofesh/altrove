@@ -1,5 +1,5 @@
 {
-  "name": "govhack2014",
+  "name": "altrove",
   "version": "0.0.1-2",
   "subdomain": "govhack2014",
   "domains": [
@@ -25,7 +25,7 @@
     "dev": "gulp; gulp watch",
     "watch": "gulp watch",
     "check": "david",
-    "build": "gulp"
+    "build": "gulp build"
   },
   "contributors": [
     {

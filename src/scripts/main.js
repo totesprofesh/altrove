@@ -3,11 +3,9 @@ var app = app || {};
 $(document).ready(function(){
 	'use strict';
 	
-	app.BASEAPIURL = 'http://0.0.0.0:60022';
-
-	// $.get('data/background.json',function(data){
-	// 	app.populateBackground(data);
-	// },'json');
+	$.get('/random/pictures.json?count=100',function(data){
+		app.populateBackground(data);
+	},'json');
 
 	app.searchTabs();
 	app.formRangeFields();
@@ -42,25 +40,18 @@ app.searchAutoComplete = function() {
 
 	function doRemoteAutocomplete(search) {
 		var matches = [];
-		console.time('getSearch');
 
-		// $.ajax({
-		// 	url: app.BASEAPIURL + '/autocomplete?query='+search,
-		// 	success:function(result){
-		//     console.log(result);
-		//   }
-		// });
+		$.get('/autocomplete?query='+search, function(data){
+			remoteACStage.find('li').remove();
 
-
-
-		// $.get(app.BASEAPIURL + '/autocomplete?query='+search, function(data){
-		// 	console.timeEnd('getSearch');
-		// 	console.log(data);
-
-		// 	$(data.results).each(function(i, data) {
-		// 		remoteACStage.append($('<li/>').append($('<a/>').attr('href','#').text(data)));
-		// 	});
-		// }, 'json');
+			if(data.results.length > 0){
+				$(data.results).each(function(i, data) {
+					remoteACStage.append($('<li/>').append($('<a/>').attr('href','#').text(data)));
+				});
+			} else {
+				remoteACStage.append($('<li/>').append($('<a/>').text('No remote matches')));
+			}
+		}, 'json');
 	}
 
 	function doLocalAutocomplete(search) {
@@ -79,9 +70,13 @@ app.searchAutoComplete = function() {
 
 		localACStage.find('li').remove();
 
-		$(matches).each(function(i, data) {
-			localACStage.append($('<li/>').append($('<a/>').attr('href','#').text(data)));
-		});
+		if(matches.length > 0){
+			$(matches).each(function(i, data) {
+				localACStage.append($('<li/>').append($('<a/>').attr('href','#').text(data)));
+			});
+		} else {
+			localACStage.append($('<li/>').append($('<a/>').text('No local matches')));
+		}
 	}
 
 };
@@ -228,34 +223,86 @@ app.populateBackground = function(data) {
 	'use strict';
 	
 	var cardsContainer = $('.cards');
-	var cardData = data.results;
+	// var cardData = data.results;
+	var cardData = data.image;
 
-	cardData.sort(function() { return 0.5 - Math.random() });
+	// for (var i = 0; i < cardData.length; i++) {
+	// 	switch (cardData[i].ty) {
+	// 		case 'image':
+	// 			layoutImage(cardData[i]);
+	// 			break;
+	// 		case 'tag':
+	// 			layoutTag(cardData[i]);
+	// 			break;
+	// 		case 'search':
+	// 			layoutSearch(cardData[i]);
+	// 			break;
+	// 		default:
+	// 			break;
+	// 	}
+	// }
+
+	// Create the containers and index list
+	var indexes = [];
+	var html = '';
+
+	var body = $('body');
 
 	for (var i = 0; i < cardData.length; i++) {
-		switch (cardData[i].ty) {
-			case 'image':
-				layoutImage(cardData[i]);
-				break;
-			case 'tag':
-				layoutTag(cardData[i]);
-				break;
-			case 'search':
-				layoutSearch(cardData[i]);
-				break;
-			default:
-				break;
-		}
+		html += '<div class="card image"></div>';
+		indexes.push(i);
 	}
 
-	function layoutImage(data) {
-		cardsContainer.append(
-			$('<div/>').addClass('card image')
-				.append($('<a />').attr('href',data.l)
-					.append($('<img />').attr('src', data.i))
-				)
-		);
+	cardsContainer[0].innerHTML = html;
+
+	indexes.sort(function() { return 0.5 - Math.random() });
+
+	// Add the images/anchors
+	var cards = cardsContainer.find('div');
+	
+	for (var i = 0; i < cardData.length; i++) {
+		layoutImage(indexes[i], cardData[i]);
 	}
+
+	function layoutImage(index, data) {
+		var img = $('<img />').attr('src', data.i);
+		var div = cards.eq(index);
+
+		div.append($('<a />').attr('href', data.l).append(img));
+
+		img.one('load', function() {
+			console.log('foobar');
+			div.addClass('active');
+		});
+	}
+
+	// var cards = cardsContainer.find('div');
+	// var currentCard = cardData.length - 1;
+	// var currentlyProcessing = 0;
+	
+	// // for (var i = 0; i < cardData.length; i++) {
+	// // 	layoutImage(indexes[i], cardData[i]);
+	// // }
+
+	// // while (currentCard > 0) {
+	// // 	if (currentlyProcessing <= 10){
+	// // 		layoutImage(indexes[currentCard], cardData[currentCard]);
+	// // 	}
+	// // }
+
+	// function layoutImage(index, data) {
+	// 	var img = $('<img />').attr('src', data.i);
+	// 	var div = cards.eq(index);
+
+	// 	img.one('load', function() {
+	// 		div.addClass('active');
+	// 		currentCard--;
+	// 		currentlyProcessing--;
+	// 	});
+
+	// 	div.append($('<a />').attr('href', data.l).append(img));
+	// 	currentlyProcessing++;
+	// }
 
 	function layoutTag(data) {
 		cardsContainer.append(

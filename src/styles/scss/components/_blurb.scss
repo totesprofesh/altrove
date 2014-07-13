@@ -1,10 +1,13 @@
 .blurb {
 	@include box-sizing(border-box);
-	padding: 20px;
+	@include font-size(28px);
+	font-weight: 200;
+	padding: 0px 20px 20px 20px;
 	margin: 0 auto;
 	color: $text-light;
 	background: rgba($background-dark, 0.8);
 	a {
+		color: #fff;
 		text-decoration: none;
 		font-weight: 500;
 		&:visited {

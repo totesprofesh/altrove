@@ -1,9 +1,24 @@
 .cards { 
-	@include column-count(8);
+	@include column-count(12);
 	@include column-gap(0px);
 
  .card {
+ 	@include transition(opacity 1000ms ease-in-out);
  	overflow: hidden;
+ 	opacity: 0;
+ 	height: 100px;
+ 	&.active {
+ 		opacity: 1;
+ 	}
+ 	&:nth-child(3n) {
+ 		height: 200px;
+ 	}
+ 	&:nth-child(2n) {
+ 		height: 180px;
+ 	}
+ 	&:nth-child(5n) {
+ 		height: 150px;
+ 	}
 
  	a {
 		@include transition(opacity 300ms ease-in-out);
@@ -11,6 +26,7 @@
  		color: $text-light;
  		display: block;
  		opacity: 0.6;
+ 		height: 100%;
  		&:hover {
  			opacity: 1;
  		}
@@ -18,8 +34,10 @@
 
  	&.image {
  		img {
-	 		width: 100%;
-	 		height: auto;
+ 			min-height: 150%;
+			width: auto;
+			min-width: 100%;
+			margin-top: -25%;
 	 		display: block;
 	 		background: rgba(black, 0.01);
 	 	}
