@@ -344,3 +344,34 @@ $.fn.filterByData = function (prop, val) {
 		function () { return $(this).data(prop) == val; }
 	);
 };
+
+if (!window.location.origin) {
+  window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+}
+
+// websocket stuff
+var socket = io(window.location.origin);
+var $searchField = $('.textboxsearch');
+
+socket.on('id', function(id) {
+  $searchField.change(function() {
+    socket.emit('search', {
+      id: id,
+      search: $searchField.val()
+    });
+  });
+
+  socket.on('search', function (data) {
+    if (data.id !== id) {
+      console.log(data);
+    }
+  });
+});
+
+
+
+
+$(window).on('beforeunload', function(){
+    socket.close();
+});
+

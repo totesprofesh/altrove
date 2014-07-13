@@ -17,7 +17,9 @@ fetchr.fetchEvery('http://trove.nla.gov.au/recentSearches', 5000, function (err,
 });
 
 var restify = require('restify');
+var socketio = require('socket.io');
 var server = restify.createServer();
+var io = socketio.listen(server);
 var routes = require('./routes');
 
 server.use(restify.gzipResponse());
@@ -28,6 +30,13 @@ server.get(/.*/, restify.serveStatic({
   directory: './static',
   default: 'index.html'
 }));
+
+io.sockets.on('connection', function (socket) {
+  socket.emit('id', socket.client.id);
+  socket.on('search', function (query) {
+    io.sockets.emit('search', query);
+  });
+});
 
 server.listen(process.env.PORT, function start_server() {
 	console.log('%s listening at %s', server.name, server.url);
