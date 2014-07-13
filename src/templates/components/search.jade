@@ -1,7 +1,7 @@
 form(class="search" action="http://trove.nla.gov.au/result")
 	label.primary-search-box
-		span.screen-reader-text Search TROVE for people, places and things
-		input(name="q" autocomplete="off" class="textboxsearch" title="Search for" placeholder="Search for people, places or things"  value="" type="text")
+		span.screen-reader-text Search TROVE for people, places and objects
+		input(name="q" autocomplete="off" class="textboxsearch" title="Search for" placeholder="Search TROVE for people, places and objects"  value="" type="text")
 		button(type='submit').btn.icon-search Search
 	div.autocomplete
 		h2 Your Searches
@@ -17,10 +17,10 @@ form(class="search" action="http://trove.nla.gov.au/result")
 	div.tabs
 		div.tab.advanced
 			fieldset.language
-				legend Region stuff
+				legend Content origin
 
 				label 
-					span Australian content
+					span Query Australian content only
 					input(type='checkbox', value='y', name='l-australian')
 
 			fieldset.timeframe
@@ -92,7 +92,7 @@ form(class="search" action="http://trove.nla.gov.au/result")
 				div.added-filters
 
 		div.tab.history
-			a.clear-history.btn(href="#") Clear History
+			//- a.clear-history.btn(href="#") Clear History
 			table
 				tr
 					th Query

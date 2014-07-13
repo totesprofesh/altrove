@@ -3,7 +3,7 @@ var app = app || {};
 $(document).ready(function(){
 	'use strict';
 	
-	$.get('/random/pictures.json?count=100',function(data){
+	$.get('/random/pictures.json?count=120',function(data){
 		app.populateBackground(data);
 	},'json');
 
@@ -72,7 +72,7 @@ app.searchAutoComplete = function() {
 
 		if(matches.length > 0){
 			$(matches).each(function(i, data) {
-				localACStage.append($('<li/>').append($('<a/>').attr('href','#').text(data)));
+				localACStage.append($('<li/>').append($('<a/>').attr('href','http://trove.nla.gov.au/result?q='+data).text(data)));
 			});
 		} else {
 			localACStage.append($('<li/>').append($('<a/>').text('No local matches')));
@@ -271,38 +271,11 @@ app.populateBackground = function(data) {
 		div.append($('<a />').attr('href', data.l).append(img));
 
 		img.one('load', function() {
-			console.log('foobar');
 			div.addClass('active');
 		});
 	}
 
-	// var cards = cardsContainer.find('div');
-	// var currentCard = cardData.length - 1;
-	// var currentlyProcessing = 0;
-	
-	// // for (var i = 0; i < cardData.length; i++) {
-	// // 	layoutImage(indexes[i], cardData[i]);
-	// // }
 
-	// // while (currentCard > 0) {
-	// // 	if (currentlyProcessing <= 10){
-	// // 		layoutImage(indexes[currentCard], cardData[currentCard]);
-	// // 	}
-	// // }
-
-	// function layoutImage(index, data) {
-	// 	var img = $('<img />').attr('src', data.i);
-	// 	var div = cards.eq(index);
-
-	// 	img.one('load', function() {
-	// 		div.addClass('active');
-	// 		currentCard--;
-	// 		currentlyProcessing--;
-	// 	});
-
-	// 	div.append($('<a />').attr('href', data.l).append(img));
-	// 	currentlyProcessing++;
-	// }
 
 	function layoutTag(data) {
 		cardsContainer.append(

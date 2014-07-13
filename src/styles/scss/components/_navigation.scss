@@ -18,16 +18,21 @@ nav {
 			display: block;
 			text-decoration: none;
 			padding: 10px;
+			position: relative;
 
 			.definition {
 				@include box-sizing(border-box);
+				color: $text-dark;
 				padding: 10px;
 				position: absolute;
-				background: $rover;
+				z-index: 100;
+				background: $background-light;
 				display: none;
 				top: 100%;
 				left: 0;
-				width: 100%;
+				width: 400px;
+
+
 			}
 
 			&:hover {
