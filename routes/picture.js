@@ -29,6 +29,7 @@ exports.get_random_pictures = function (req, res, next) {
 				fixed_works.push({
 					i: ids[1].value,
 					l: work.troveUrl,
+					t: work.title,
 				});
 			}
 		});
