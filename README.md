@@ -4,37 +4,37 @@
 
 The [TotesProfesh](http://totesprofe.sh) team at GovHack 2014 featured:
 
-- Jonny Scholes
+- [Jonny Scholes](https://github.com/joshgillies)
 
-- Josh Gillies
+- [Josh Gillies](https://github.com/jonnyscholes)
 
-- Matt McKellar-Spence
+- [Matt McKellar-Spence](https://github.com/MattMS)
 
 
 ## Skills
 
-With our broad range of skills and interests in different areas, we are
+With our broad range of skills, interests, and talents, we were
 able to work on different areas of the app concurrently.
 Our overlapping knowledge makes joining all the components easier too.
 
-Jonny focussed his talents of design and user experience.
+Jonny focused his talent for design and user experience.
 Being a skilled developer also allows him to navigate the technical
 limitations of design choices.
 
 Matt spends his time in the massive server and database world.
 He plans models and creates APIs that expose the data efficiently.
 
-Josh is a jack-of-all-trades, optimising the connection between the user
+Josh is a jack-of-all-trades, optimizing the connection between the user
 and server.
-His passion for Javascript and Node is the glue that holds everything
+His passion for JavaScript and Node.js is the glue that holds everything
 together.
 
 
 ## Conception
 
-Having various friends studying history and other subjects at UTas
+Having various friends studying history and other subjects at UTAS
 provided us with many opinions on the strengths and weaknesses of the
-current Trove site.
+current Trove homepage.
 
 The general opinion is that although it contains an amazing amount of
 information, it is difficult for new users to find what they are looking
@@ -61,21 +61,20 @@ weekend.
 
 ## Previous research
 
-We each had a look over the current Trove site to learn how is used.
-We studied what the API provided and, just as importantly, what it
+We each had a look over the current Trove homepage to learn how it is used.
+We studied what their API provided and, just as importantly, what it
 lacked.
 
 
 ## Development tools
 
-The general preference of the team was to use NoSQL databases.
-We all have experience with Redis, CouchDB/PouchDB and MongoDB.
+The general preference of the team was to use the and flexibility of NoSQL to store and process data.
+We all have experience with Redis, CouchDB/PouchDB, and LevelDB.
 
-We settled on the CouchDB/PouchDB combination because of the simple
-JSON storage and the simple RESTful interface.
+We settled on the CouchDB/PouchDB combination because of the simplicity of storing data via JSON documents and it's incredibly flexible RESTful interface.
 
-We managed code in local Git repos and pushed to GitHub, where we could
-pull others changes from.
+We managed our code in local Git repos and pushed to GitHub, where we could
+pull each others changes from.
 
 
 ## Main goals
