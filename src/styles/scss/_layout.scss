@@ -63,3 +63,26 @@ body {
 		text-decoration: none;
 	}
 }
+
+
+//Bad Jonny.
+.live-searches {
+	a {
+		@include transition(color 300ms ease-in-out);
+		padding: 5px 10px;
+		position: absolute;
+		background: rgba($background-dark, 0.8);
+		color: lighten($rover, 50%);
+		text-decoration: none;
+		position: absolute;
+		z-index: 1;
+
+		&:visited {
+			color: $rover;
+		}
+
+		&:hover {
+			color: lighten($rover, 70%);
+		}
+	}
+}

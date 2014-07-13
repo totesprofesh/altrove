@@ -3,6 +3,8 @@ var app = app || {};
 $(document).ready(function(){
 	'use strict';
 
+	app.socket = io(window.location.origin);
+
 	enquire.register("screen and (min-width:1290px)", {
 	    match : function() {
 	    	$.get('/random/pictures.json?count=100',function(data){
@@ -24,8 +26,46 @@ $(document).ready(function(){
 	app.formTagFields();
 	app.searchHistory();
 	app.searchAutoComplete();
+	app.broadcastSearches();
 
 });
+
+$(window).on('beforeunload', function(){
+    app.socket.close();
+});
+
+app.broadcastSearches = function() {
+	var socket = app.socket;
+	var searchForm = $('.search');
+	var $searchField = $('.textboxsearch');
+	var searchStage = $('.live-searches');
+	var width = $(window).width();
+	var height = $(window).height();
+
+	socket.on('id', function(id) {
+	  searchForm.on('submit', function() {
+	    socket.emit('search', {
+	      id: id,
+	      search: $searchField.val()
+	    });
+	  });
+
+	  socket.on('search', function (data) {
+	    if (data.id !== id) {
+	      drawSearch(data);
+	    }
+	  });
+	});
+
+	function drawSearch(data) {
+		searchStage.append(
+			$('<a/>')
+			.attr('href', 'http://trove.nla.gov.au/result?q='+data.search)
+			.text(data.search)
+			.css({'left': getRandomInt(100, width-100)+'px','top': getRandomInt(100, height-100)+'px'})
+		);
+	}
+};
 
 app.searchAutoComplete = function() {
 	var searchForm = $('.search .primary-search-box');
@@ -336,29 +376,8 @@ if (!window.location.origin) {
   window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
 }
 
-// websocket stuff
-var socket = io(window.location.origin);
-var $searchField = $('.textboxsearch');
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-socket.on('id', function(id) {
-  $searchField.change(function() {
-    socket.emit('search', {
-      id: id,
-      search: $searchField.val()
-    });
-  });
-
-  socket.on('search', function (data) {
-    if (data.id !== id) {
-      console.log(data);
-    }
-  });
-});
-
-
-
-
-$(window).on('beforeunload', function(){
-    socket.close();
-});
 

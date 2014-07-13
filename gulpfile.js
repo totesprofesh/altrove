@@ -52,7 +52,6 @@ gulp.task('html', function () {
   return gulp.src(app + '/*.html')
     .pipe($.useref.assets()).on('error', gutil.log)
     .pipe(jsFilter)
-    .pipe($.uglify())
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
     .pipe($.minifyCss())
