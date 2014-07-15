@@ -68,7 +68,7 @@ lacked.
 
 ## Development tools
 
-The general preference of the team was to use the and flexibility of NoSQL to store and process data.
+The general preference of the team was to use a NoSQL database to store and process data.
 We all have experience with Redis, CouchDB/PouchDB, and LevelDB.
 
 We settled on the CouchDB/PouchDB combination because of the simplicity of storing data via JSON documents and it's incredibly flexible RESTful interface.
