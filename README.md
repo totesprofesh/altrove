@@ -53,7 +53,7 @@ We made extensive use of [Trello](https://trello.com/) for planning and
 managing tasks.
 
 Ideas from users and ourselves were captured in story form.
-"As a <user> I want <desired feature> so that <improvement gained>".
+"As a {user} I want {desired feature} so that {improvement gained}".
 
 We also used cards for storing notes and even our expenses over the
 weekend.
