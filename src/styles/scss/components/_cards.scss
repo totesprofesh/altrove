@@ -33,8 +33,9 @@
 
  	a {
 		@include transition(opacity 300ms ease-in-out);
+		display: inline-block;
+		overflow: hidden;
  		text-decoration: none;
- 		
  		color: $text-light;
  		display: block;
  		opacity: 0.6;

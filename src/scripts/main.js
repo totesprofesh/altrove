@@ -98,7 +98,7 @@ app.searchAutoComplete = function() {
 
 			if(data.results.length > 0){
 				$(data.results).each(function(i, data) {
-					remoteACStage.append($('<li/>').append($('<a/>').attr('href','href','http://trove.nla.gov.au/result?q='+data).text(data)));
+					remoteACStage.append($('<li/>').append($('<a/>').attr('href', 'http://trove.nla.gov.au/result?q='+data).text(data)));
 				});
 			} else {
 				remoteACStage.append($('<li/>').append($('<a/>').text('No remote matches')));
